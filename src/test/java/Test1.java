@@ -25,7 +25,6 @@ public class Test1 {
                     FramedWriter writer = new FramedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     writer.sendString("Hello world");
                     System.out.println("ECHO: " + reader.readString());
-
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
