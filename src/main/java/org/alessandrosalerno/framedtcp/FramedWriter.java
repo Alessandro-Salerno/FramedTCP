@@ -18,7 +18,7 @@ public class FramedWriter {
         this.frameSizeValidator = new DefaultFrameSizeValidator();
     }
 
-    public void sendBytes(byte[] bytes) throws IOException {
+    public void writeBytes(byte[] bytes) throws IOException {
         int messageLength = bytes.length;
 
         if (!this.frameSizeValidator.validFrameSize(messageLength))
@@ -34,8 +34,12 @@ public class FramedWriter {
         this.writer.flush();
     }
 
-    public void sendString(String string) throws IOException {
-        this.sendBytes(string.getBytes());
+    public void writeChars(char[] chars) throws IOException {
+        this.writeBytes(new String(chars).getBytes());
+    }
+
+    public void writeString(String string) throws IOException {
+        this.writeBytes(string.getBytes());
     }
 
     private void writeByteBuffer(ByteBuffer byteBuffer, int size) throws IOException {

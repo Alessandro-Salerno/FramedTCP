@@ -6,7 +6,8 @@
 
     <groupId>org.alessandrosalerno.ordermatchingengine</groupId>
     <artifactId>FramedTCP</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1.1</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <distributionManagement>
         <repository>

@@ -28,6 +28,10 @@ public class FramedReader {
         return this.readSegment(header.messageSize());
     }
 
+    public char[] readChars() throws IOException {
+        return ByteBuffer.wrap(this.readBytes()).asCharBuffer().array();
+    }
+
     public String readString() throws IOException {
         return new String(this.readBytes());
     }
