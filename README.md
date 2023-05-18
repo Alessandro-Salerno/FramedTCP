@@ -22,7 +22,7 @@ try (ServerSocket serverSocket = new ServerSocket(8000)) {
     Socket client = serverSocket.accept();
     FramedReader reader = new FramedReader(new InputStreamReader(client.getInputStream()));
     FramedWriter writer = new FramedWriter(new OutputStreamWriter(client.getOutputStream()));
-    writer.sendBytes(reader.readBytes());
+    writer.writeBytes(reader.readBytes());
 } catch (Exception e) {
     throw new RuntimeException(e);
 }
@@ -32,7 +32,7 @@ try (ServerSocket serverSocket = new ServerSocket(8000)) {
 try (Socket socket = new Socket("", 8000)) {
     FramedReader reader = new FramedReader(new InputStreamReader(socket.getInputStream()));
     FramedWriter writer = new FramedWriter(new OutputStreamWriter(socket.getOutputStream()));
-    writer.sendString("Hello world");
+    writer.writeString("Hello world");
     System.out.println("ECHO: " + reader.readString());
 } catch (Exception e) {
     throw new RuntimeException(e);
