@@ -6,13 +6,7 @@
 
     <groupId>org.alessandrosalerno.ordermatchingengine</groupId>
     <artifactId>FramedTCP</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-        </repository>
-    </distributionManagement>
+    <version>0.1.2-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
