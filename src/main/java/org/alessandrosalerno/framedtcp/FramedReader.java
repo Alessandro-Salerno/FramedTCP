@@ -3,18 +3,42 @@ package org.alessandrosalerno.framedtcp;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class FramedReader {
     private final Reader reader;
+    private final Charset charset;
     private final FrameSizeValidator frameSizeValidator;
 
-    public FramedReader(Reader reader, FrameSizeValidator frameSizeValidator) {
+    public FramedReader(Reader reader,
+                        Charset charset,
+                        FrameSizeValidator frameSizeValidator) {
+
         this.reader = reader;
+        this.charset = charset;
+        this.frameSizeValidator = frameSizeValidator;
+    }
+
+    public FramedReader(Reader reader,
+                        Charset charset) {
+
+        this.reader = reader;
+        this.charset = charset;
+        this.frameSizeValidator = new DefaultFrameSizeValidator();
+    }
+
+    public FramedReader(Reader reader,
+                        FrameSizeValidator frameSizeValidator) {
+
+        this.reader = reader;
+        this.charset = StandardCharsets.UTF_8;
         this.frameSizeValidator = frameSizeValidator;
     }
 
     public FramedReader(Reader reader) {
         this.reader = reader;
+        this.charset = StandardCharsets.UTF_8;
         this.frameSizeValidator = new DefaultFrameSizeValidator();
     }
 
@@ -28,12 +52,12 @@ public class FramedReader {
         return this.readSegment(header.messageSize());
     }
 
-    public char[] readChars() throws IOException {
-        return ByteBuffer.wrap(this.readBytes()).asCharBuffer().array();
+    public String readString() throws IOException {
+        return new String(this.readBytes(), this.charset);
     }
 
-    public String readString() throws IOException {
-        return new String(this.readBytes());
+    public Charset getCharset() {
+        return this.charset;
     }
 
     private FrameHeader readHeader() throws IOException {
