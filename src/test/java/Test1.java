@@ -1,5 +1,5 @@
-import org.alessandrosalerno.framedtcp.FramedWriter;
-import org.alessandrosalerno.framedtcp.FramedReader;
+import alessandrosalerno.framedtcp.FramedWriter;
+import alessandrosalerno.framedtcp.FramedReader;
 
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;

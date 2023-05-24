@@ -1,4 +1,4 @@
-package org.alessandrosalerno.framedtcp;
+package alessandrosalerno.framedtcp;
 
 public final class DefaultFrameSizeValidator implements FrameSizeValidator {
     private final int maxSize;

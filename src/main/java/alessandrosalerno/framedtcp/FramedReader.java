@@ -1,4 +1,4 @@
-package org.alessandrosalerno.framedtcp;
+package alessandrosalerno.framedtcp;
 
 import java.io.IOException;
 import java.io.Reader;

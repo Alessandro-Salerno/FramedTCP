@@ -1,4 +1,4 @@
-package org.alessandrosalerno.framedtcp;
+package alessandrosalerno.framedtcp;
 
 public record FrameHeader(int messageSize) {
 }

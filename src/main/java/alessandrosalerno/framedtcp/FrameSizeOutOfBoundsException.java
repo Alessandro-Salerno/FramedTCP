@@ -1,4 +1,4 @@
-package org.alessandrosalerno.framedtcp;
+package alessandrosalerno.framedtcp;
 
 public class FrameSizeOutOfBoundsException extends RuntimeException {
     public FrameSizeOutOfBoundsException(int size, int maxSize) {
