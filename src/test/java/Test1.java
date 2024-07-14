@@ -11,7 +11,7 @@ public class Test1 {
         new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(8000)) {
                 Socket client = serverSocket.accept();
-                FramedReader reader = new FramedReader(new InputStreamReader(client.getInputStream()));
+                FramedReader reader = new FramedReader(client.getInputStream());
                 FramedWriter writer = new FramedWriter(new OutputStreamWriter(client.getOutputStream()));
                 writer.writeBytes(reader.readBytes());
             } catch (Exception e) {
@@ -21,7 +21,7 @@ public class Test1 {
 
         new Thread(() -> {
             try (Socket socket = new Socket("", 8000)) {
-                    FramedReader reader = new FramedReader(new InputStreamReader(socket.getInputStream()));
+                    FramedReader reader = new FramedReader(socket.getInputStream());
                     FramedWriter writer = new FramedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     writer.writeString("Hello world");
                     System.out.println("ECHO: " + reader.readString());
